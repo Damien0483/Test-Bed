@@ -1,0 +1,7 @@
+    /* ============================================================================
+            Name:          generateTable
+            Parameters:    none
+            Return:        none
+            Description:   Creates either addtion or multiplication table from 
+            0 to 10 rows and columns
+    ============================================================================*/
