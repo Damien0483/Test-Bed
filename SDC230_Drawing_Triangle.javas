@@ -1,0 +1,71 @@
+public class DrawTriangle {
+
+    private int size;
+
+    // Constructor
+    public DrawTriangle(int size) {
+        if (size > 0) {
+            this.size = size;
+        } else {
+            this.size = 5;
+        }
+    }
+
+    // Getter
+    public int getSize() {
+        return size;
+    }
+
+    // Setter with validation
+    public void setSize(int size) {
+        if (size > 0) {
+            this.size = size;
+        }
+    }
+
+    // Pattern A: Left-aligned, growing
+    public void drawPatternA() {
+        for (int i = 1; i <= size; i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print('*');
+            }
+            System.out.println();
+        }
+    }
+
+    // Pattern B: Left-aligned, shrinking
+    public void drawPatternB() {
+        for (int i = size; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                System.out.print('*');
+            }
+            System.out.println();
+        }
+    }
+
+    // Pattern C: Right-aligned, shrinking
+    public void drawPatternC() {
+        for (int i = size; i >= 1; i--) {
+            for (int spaces = 0; spaces < size - i; spaces++) {
+                System.out.print(' ');
+            }
+            for (int stars = 0; stars < i; stars++) {
+                System.out.print('*');
+            }
+            System.out.println();
+        }
+    }
+
+    // Pattern D: Right-aligned, growing
+    public void drawPatternD() {
+        for (int i = 1; i <= size; i++) {
+            for (int spaces = 0; spaces < size - i; spaces++) {
+                System.out.print(' ');
+            }
+            for (int stars = 0; stars < i; stars++) {
+                System.out.print('*');
+            }
+            System.out.println();
+        }
+    }
+}
