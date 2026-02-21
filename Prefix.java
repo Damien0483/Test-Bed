@@ -10,58 +10,62 @@ public static String convertToPostfix(String infix) throws IllegalArgumentExcept
 
     for (String token : tokens) {
 
-        // 1. Numbers → append directly
+        // 1. Handle Numbers
         if (isNumeric(token)) {
             output.append(token).append(" ");
+            continue;
         }
 
-        // 2. '(' → push
-        else if (token.equals("(")) {
-            stack.push('(');
+        // Token should be a single character if not numeric
+        if (token.length() != 1) {
+            throw new IllegalArgumentException("Invalid token: " + token);
         }
 
-        // 3. ')' → pop until '('
-        else if (token.equals(")")) {
-            boolean foundOpening = false;
+        char ch = token.charAt(0);
+
+        // 2. Handle '('
+        if (ch == '(') {
+            stack.push(ch);
+            continue;
+        }
+
+        // 3. Handle ')'
+        if (ch == ')') {
+            boolean foundParen = false;
 
             while (!stack.isEmpty()) {
                 char top = stack.pop();
                 if (top == '(') {
-                    foundOpening = true;
+                    foundParen = true;
                     break;
                 }
                 output.append(top).append(" ");
             }
 
-            if (!foundOpening) {
-                throw new IllegalArgumentException("Mismatched parentheses: missing '('");
+            if (!foundParen) {
+                throw new IllegalArgumentException("Mismatched parentheses.");
             }
+            continue;
         }
 
-        // 4. Operators
-        else if (token.length() == 1 && "+-*/".indexOf(token.charAt(0)) >= 0) {
-            char op = token.charAt(0);
-
-            while (!stack.isEmpty() &&
-                   stack.peek() != '(' &&
-                   getPrecedence(stack.peek()) >= getPrecedence(op)) {
+        // 4. Handle Operators
+        if ("+-*/".indexOf(ch) != -1) {
+            while (!stack.isEmpty() && getPrecedence(stack.peek()) >= getPrecedence(ch)) {
                 output.append(stack.pop()).append(" ");
             }
-
-            stack.push(op);
+            stack.push(ch);
+            continue;
         }
 
         // 5. Invalid token
-        else {
-            throw new IllegalArgumentException("Invalid token: " + token);
-        }
+        throw new IllegalArgumentException("Invalid token: " + token);
     }
 
-    // 6. Cleanup loop
+    // 6. Cleanup Loop
     while (!stack.isEmpty()) {
         char top = stack.pop();
         if (top == '(') {
-            throw new IllegalArgumentException("Mismatched parentheses: unclosed '('");
+            throw new IllegalArgumentException("Unclosed parenthesis.");
         }
         output.append(top).append(" ");
     }
