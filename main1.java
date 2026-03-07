@@ -1,18 +1,54 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Create an Address
-        Address addr = new Address("123 Maple Street", "Springfield", "22150");
+        Scanner input = new Scanner(System.in);
 
-        // Create a Student
-        Student stu = new Student("Alice Johnson", 10245, addr, 3.85, "Computer Science");
+        System.out.print("Enter Full Name: ");
+        String fullName = input.nextLine();
 
-        // Add some courses
-        stu.addCourse("Data Structures");
-        stu.addCourse("Operating Systems");
-        stu.addCourse("Discrete Mathematics");
+        System.out.print("Enter ID Number: ");
+        int id = Integer.parseInt(input.nextLine());
 
-        // Print the student (uses overridden toString)
+        System.out.print("Enter Major: ");
+        String major = input.nextLine();
+
+        System.out.print("Enter GPA: ");
+        double gpa = Double.parseDouble(input.nextLine());
+
+        System.out.print("Enter Street: ");
+        String street = input.nextLine();
+
+        System.out.print("Enter City: ");
+        String city = input.nextLine();
+
+        System.out.print("Enter Zip: ");
+        String zip = input.nextLine();
+
+        Address addr = new Address(street, city, zip);
+        Student stu = new Student(fullName, id, addr, gpa, major);
+
+        // Collect 3 courses
+        for (int i = 1; i <= 3; i++) {
+            System.out.print("\nEnter course #" + i + ": ");
+            String course = input.nextLine();
+            stu.addCourse(course);
+        }
+
+        // Update major
+        System.out.println("\nUpdating Major to Cybersecurity...");
+        stu.setMajor("Cybersecurity");
+
+        // Final Output
+        System.out.println("\n--- Final Student Profile ---");
         System.out.println(stu.toString());
+
+        System.out.println("\nIndividual Course List:");
+        for (String c : stu.getCourseList()) {
+            System.out.println(" >> " + c);
+        }
+
+        input.close();
     }
 }
