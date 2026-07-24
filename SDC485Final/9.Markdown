@@ -1,0 +1,2 @@
+## **Implement the Initial XGBoost Regression Model**
+Training an out-of-the-box XGBoost regressor to predict average wait times.
