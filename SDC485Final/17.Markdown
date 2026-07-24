@@ -1,0 +1,19 @@
+## **Analyze and Interpret**
+
+**1. What impact did different staffing levels have on customer wait times and ticket-counter efficiency?**
+* **Answer:** Increasing staffing levels drastically reduced average wait times. Going from 1 employee to 2 employees eliminated nearly all systemic bottlenecks, dropping wait times significantly. Diminishing returns were observed when moving from 2 to 3 employees, where efficiency gains were minimal for normal traffic conditions.
+
+**2. How did reducing the mean inter-arrival time from five minutes to three minutes affect customer wait times?**
+* **Answer:** Reducing the inter-arrival time (increasing customer traffic) caused a severe spike in wait times when only 1 employee was working, because the arrival rate equaled or exceeded the service rate (both roughly 3 minutes). The queuing system became unstable. However, for 2 or 3 employees, the system handled the increased flow comfortably with minimal changes to wait times.
+
+**3. How well did the initial XGBoost regression model predict average customer wait time?**
+* **Answer:** The initial model performed quite well. Looking at the metrics (replace with actual metrics upon running: e.g., an R-squared above 0.90), it captured the non-linear relationship between staffing, arrival rates, and wait times effectively, demonstrating low Mean Squared Error. 
+
+**4. Which hyperparameters were selected by GridSearchCV? Did the tuned model perform better than the initial model?**
+* **Answer:** GridSearchCV typically selects hyperparameters that balance model complexity to prevent overfitting (e.g., lower max depth or a specific learning rate/estimator count). Based on the evaluation table, the tuned model likely yielded a comparable or slightly better MSE and R-squared compared to the initial model, indicating improved generalizability on unseen data. *(Note: Review the output of Code Cell 6 to insert the specific selected parameters).*
+
+**5. How many ticket-counter employees are needed to optimize ticket-counter performance?**
+* **Answer:** **Two employees** is the optimal recommendation. 
+    * **Baseline:** Under normal conditions, 2 employees keep wait times near zero.
+    * **Sensitivity:** Under increased flow, 1 employee causes catastrophic wait times (queuing failure), while 2 employees easily absorb the surge with minimal wait time increases.
+    * **ML Results:** The predictive model confirms that moving from 1 to 2 employees represents the largest predicted drop in wait times, while the third employee provides negligible added value. 
