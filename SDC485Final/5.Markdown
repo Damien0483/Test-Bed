@@ -1,0 +1,2 @@
+## **Analyze the Baseline Simulation Results**
+Analyzing customer wait times for the normal traffic condition (5-minute mean inter-arrival time).
