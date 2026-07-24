@@ -1,0 +1,2 @@
+## **Set Up & Implement the Simulation**
+Creating a reusable discrete-event simulation function to model customer flow at the movie theater ticket counter using `simpy`. 
