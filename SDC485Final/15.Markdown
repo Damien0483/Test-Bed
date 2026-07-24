@@ -1,0 +1,2 @@
+## **Apply Sensitivity Analysis**
+Evaluating how the system performs under increased customer flow (3-minute inter-arrival time vs. 5-minute).
