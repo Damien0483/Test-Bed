@@ -1,0 +1,16 @@
+Markdown guidance (what to answer)
+In separate markdown cells, respond to:
+Which classification model performed best, and why?  
+Compare accuracy, precision/recall, and confusion matrices.
+Did GridSearchCV improve the KNN model?  
+Compare baseline vs tuned KNN metrics.
+What does the dendrogram suggest about the number of clusters?  
+Look for big vertical jumps in linkage distance.
+What values of k are suggested by the Elbow Method and Silhouette Scores?  
+Refer to plots and printed silhouette scores.
+What value of k did you select for the final model, and why?  
+Justify using elbow + silhouette + interpretability.
+What patterns distinguish the final clusters?  
+Use clust_df.groupby("cluster").mean() to describe differences in bill length, depth, flipper length, body mass.
+What limitations could affect the results?  
+Mention sample size, species imbalance, measurement noise, and choice of features/standardization.
