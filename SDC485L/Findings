@@ -1,0 +1,18 @@
+Final Findings and Recommendations
+Optimized Model Performance
+The analysis used an optimized Gradient Boosting classifier, which achieved 100% accuracy and a weighted F1‑score of 1.0 . The classification report shows perfect precision, recall, and F1‑scores for all three penguin species, and the confusion matrix confirms zero misclassifications.
+Baseline Result
+The baseline simulation produced a target‑class prediction rate of 0.3623 and an average predicted probability of 0.3621 across 69 test records .
+Scenario With the Greatest Change
+Across all three conditions—Baseline, Scenario 1, and Scenario 2—the Mean Prediction Rate remained identical at 0.361, with the same standard deviation (0.049989) and identical minimum and maximum prediction rates (0.28 and 0.43) .
+Because all scenarios produced the same results, no scenario generated a measurable change in target‑class prediction behavior.
+Direction of Change
+Since all scenarios matched the baseline values, the target‑class prediction rate neither increased nor decreased under any simulated condition.
+Sensitivity Analysis Result
+The sensitivity analysis varied the selected feature body_mass_g across five values: 3300, 3825, 4350, 4875, and 5400.
+Despite these changes, the Mean Prediction Rate remained constant at 0.348, with a Std Prediction Rate of 0.0502 for every feature value tested .
+This indicates that within the tested range, body mass had no meaningful effect on the model’s target‑class prediction rate.
+Practical Recommendation
+Because neither scenario adjustments nor feature sensitivity produced meaningful changes, the most practical next step is to expand the simulation to include more impactful features—such as culmen length or flipper length—rather than body mass alone. These features may introduce variation that the current simulations did not capture.
+Limitation of the Analysis
+A key limitation is that all simulated conditions produced identical outputs, suggesting that the simulation space may be too narrow or the model too confident. Additional variability or more extreme perturbations may be required to reveal meaningful behavioral changes
